@@ -1,8 +1,6 @@
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-
 interface ExperienceCardProps {
   company: string;
+  title?: string;
   dateRange: string;
   summary: string;
   index: number;
@@ -10,46 +8,55 @@ interface ExperienceCardProps {
   url?: string;
 }
 
-export default function ExperienceCard({ company, dateRange, summary, index, logo, url }: ExperienceCardProps) {
+export default function ExperienceCard({ company, title, dateRange, summary, logo, url }: ExperienceCardProps) {
   return (
-    <Card className="relative hover-elevate transition-all duration-300 cursor-default" data-testid={`card-experience-${company.toLowerCase().replace(/\s+/g, '-')}`}>
-      <div className="p-8 space-y-4">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="flex items-center gap-4">
-            {logo && url && (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 hover:opacity-80 transition-opacity"
-                aria-label={`Visit ${company} website`}
+    <div
+      className="relative pl-8"
+      data-testid={`card-experience-${company.toLowerCase().replace(/\s+/g, '-')}`}
+    >
+      <div className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full bg-background border-2 border-primary" />
+
+      <div className="space-y-4">
+        <div className="flex items-start gap-4">
+          {logo && url && (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 mt-0.5 hover:opacity-75 transition-opacity"
+              aria-label={`Visit ${company} website`}
+            >
+              <img
+                src={logo}
+                alt={`${company} logo`}
+                className="w-10 h-10 object-contain rounded-lg"
+              />
+            </a>
+          )}
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
+              <div>
+                <h3 className="text-xl font-semibold" data-testid="text-company">
+                  {company}
+                </h3>
+                <p className="text-sm text-primary font-medium mt-0.5" data-testid="text-title">
+                  {title}
+                </p>
+              </div>
+              <span
+                className="text-sm text-muted-foreground whitespace-nowrap pt-0.5"
+                data-testid="text-daterange"
               >
-                <img
-                  src={logo}
-                  alt={`${company} logo`}
-                  className="w-12 h-12 md:w-16 md:h-16 object-contain rounded-lg"
-                />
-              </a>
-            )}
-            <div className="space-y-2">
-              <h3 className="text-2xl md:text-3xl font-semibold" data-testid="text-company">
-                {company}
-              </h3>
-              <Badge variant="secondary" className="text-xs" data-testid="text-daterange">
                 {dateRange}
-              </Badge>
+              </span>
             </div>
           </div>
         </div>
 
-        <p className="text-foreground/90 leading-relaxed text-lg mt-6" data-testid="text-summary">
+        <p className="text-foreground/85 leading-relaxed" data-testid="text-summary">
           {summary}
         </p>
       </div>
-
-      {index > 0 && (
-        <div className="absolute -top-8 left-8 w-0.5 h-8 bg-border" />
-      )}
-    </Card>
+    </div>
   );
 }

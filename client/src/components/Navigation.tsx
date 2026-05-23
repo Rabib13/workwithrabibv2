@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Menu } from "lucide-react";
+import { Mail, Menu, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 
@@ -7,6 +7,14 @@ interface NavigationProps {
   isDark: boolean;
   toggleTheme: () => void;
 }
+
+const navLinks = [
+  { label: "Impact", id: "impact" },
+  { label: "Experience", id: "experience" },
+  { label: "Projects", id: "projects" },
+  { label: "Skills", id: "expertise" },
+  { label: "Education", id: "education" },
+];
 
 export default function Navigation({ isDark, toggleTheme }: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +24,7 @@ export default function Navigation({ isDark, toggleTheme }: NavigationProps) {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false); // Close menu after navigation
+    setIsMenuOpen(false);
   };
 
   return (
@@ -25,55 +33,51 @@ export default function Navigation({ isDark, toggleTheme }: NavigationProps) {
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 h-16 flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-lg font-semibold hover-elevate px-3 py-1 rounded-md"
+            className="text-base font-semibold hover-elevate px-3 py-1 rounded-md tracking-tight"
             data-testid="button-logo"
           >
             Rabib Alam
           </button>
 
-          <nav className="hidden md:flex items-center gap-1">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => scrollToSection("impact")}
-              data-testid="link-impact"
-            >
-              Impact
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => scrollToSection("experience")}
-              data-testid="link-experience"
-            >
-              Experience
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => scrollToSection("expertise")}
-              data-testid="link-expertise"
-            >
-              Expertise
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => scrollToSection("education")}
-              data-testid="link-education"
-            >
-              Education
-            </Button>
+          <nav className="hidden md:flex items-center gap-0.5">
+            {navLinks.map((link) => (
+              <Button
+                key={link.id}
+                variant="ghost"
+                size="sm"
+                onClick={() => scrollToSection(link.id)}
+                data-testid={`link-${link.id}`}
+                className="text-sm font-normal text-muted-foreground hover:text-foreground"
+              >
+                {link.label}
+              </Button>
+            ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
+              className="text-muted-foreground hover:text-foreground"
               data-testid="button-theme-toggle"
             >
               {isDark ? "🌞" : "🌙"}
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              asChild
+              className="text-muted-foreground hover:text-foreground hidden md:inline-flex"
+            >
+              <a
+                href="https://www.linkedin.com/in/rabibalam/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
             </Button>
             <Button
               variant="default"
@@ -82,7 +86,7 @@ export default function Navigation({ isDark, toggleTheme }: NavigationProps) {
               data-testid="button-contact"
             >
               <a href="mailto:RabibAlamAIPM@gmail.com">
-                <Mail className="w-4 h-4 mr-2" />
+                <Mail className="w-4 h-4 mr-1.5" />
                 Contact
               </a>
             </Button>
@@ -99,38 +103,29 @@ export default function Navigation({ isDark, toggleTheme }: NavigationProps) {
         </div>
       </header>
 
-      {/* Mobile navigation sheet */}
       <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
         <SheetContent side="right" className="w-[250px] sm:w-[300px]">
-          <nav className="flex flex-col gap-4 mt-8">
-            <Button
-              variant="ghost"
-              className="justify-start text-lg"
-              onClick={() => scrollToSection("impact")}
+          <nav className="flex flex-col gap-3 mt-8">
+            {navLinks.map((link) => (
+              <Button
+                key={link.id}
+                variant="ghost"
+                className="justify-start text-base font-normal"
+                onClick={() => scrollToSection(link.id)}
+              >
+                {link.label}
+              </Button>
+            ))}
+            <div className="border-t my-2" />
+            <a
+              href="https://www.linkedin.com/in/rabibalam/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
-              Impact
-            </Button>
-            <Button
-              variant="ghost"
-              className="justify-start text-lg"
-              onClick={() => scrollToSection("experience")}
-            >
-              Experience
-            </Button>
-            <Button
-              variant="ghost"
-              className="justify-start text-lg"
-              onClick={() => scrollToSection("expertise")}
-            >
-              Expertise
-            </Button>
-            <Button
-              variant="ghost"
-              className="justify-start text-lg"
-              onClick={() => scrollToSection("education")}
-            >
-              Education
-            </Button>
+              <Linkedin className="w-4 h-4" />
+              LinkedIn
+            </a>
           </nav>
         </SheetContent>
       </Sheet>

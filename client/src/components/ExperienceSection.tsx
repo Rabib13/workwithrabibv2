@@ -3,36 +3,41 @@ import ExperienceCard from "./ExperienceCard";
 const experiences = [
   {
     company: "Meta",
-    dateRange: "May 2025 - Present",
-    summary: "Leading technical delivery for the software that enables thousands of MTIA chips to communicate at high speeds—from collective communication layers to datacenter-scale network paths. My responsibility spans execution across hardware, network, and platform teams, scaling everything from chip-to-chip communication to full-rack deployments.",
+    title: "Sr. Engineering Program Manager, AI Data Centre Network Infra",
+    dateRange: "May 2025 – Present",
+    summary: "Managing networking hardware and software development for Meta's AI data centres — fabric, network switches, NICs, collectives for HPC, tooling, and telemetry. Driving NPI programs through active engagements with vendors including Broadcom, NVIDIA, AMD, and Celestica. Measuring and optimizing AI data centre network performance at GW scale globally, and building Meta's in-house silicon (MTIA) to support training and inference of AI workloads.",
     logo: "/logos/meta.png",
     url: "https://www.meta.com"
   },
   {
     company: "Tesla Energy",
-    dateRange: "February 2024 - April 2025",
-    summary: "Led execution for Tesla's fleet health monitoring system with 600+ automated workflows supporting 99% availability. Directed the migration of 1M+ devices to the internal OTA platform, enabling major operational savings. I defined requirements informed by data analysis and led delivery of improvements to the OTA workflow—introducing offline update flows and fail-fast mechanisms that significantly reduced site update times.",
+    title: "Engineering Program Manager, Service & Firmware Analytics",
+    dateRange: "Feb 2024 – May 2025",
+    summary: "Optimized over-the-air software updates and proactive alert monitoring across Tesla Energy's full product portfolio — Superchargers, Powerwalls, solar, and Megapacks. Led the migration of 1M+ devices to the internal OTA platform and built a fleet health monitoring system with 600+ automated workflows maintaining 99% availability. Introduced offline update flows and fail-fast mechanisms that reduced site update times from 60 to 35 minutes, saving engineers 300+ hours annually.",
     logo: "/logos/tesla.png",
     url: "https://www.tesla.com/energy"
   },
   {
     company: "Loblaw Digital",
-    dateRange: "July 2022 - January 2024",
-    summary: "Led the end-to-end delivery of Loblaw's ML-powered personalized ads platform in under 3 months—resulting in 40% CTR lift and $10M+ revenue. Shaped product strategy for UX-heavy features like GenAI keyword suggestion and offline sales attribution, defining requirements and partnering with design + engineering teams. Executed improvements across the data platform—distributed tracing, automated DBT pipelines, and latency-reducing infra upgrades.",
+    title: "Engineering Program Manager, GenAI, ML & Data Engineering",
+    dateRange: "Jul 2022 – Jan 2024",
+    summary: "Led two programs in under 3 months: an ML-powered personalized ads platform across all PCExpress banners (40% CTR lift, $10M+ revenue) and advertiser self-serve features that scaled the platform from 15 to 200+ advertisers. Also built a PaLM 2-based health assistant chatbot that automated appointment booking and cut physician wait times by 90%+. Enhanced the data engineering stack with distributed tracing, automated DBT pipelines, and a BigTable migration to address latency at scale.",
     logo: "/logos/loblaw.png",
     url: "https://www.loblawdigital.co"
   },
   {
     company: "General Motors",
-    dateRange: "July 2021 - July 2022",
-    summary: "Led technical execution across next-gen ML features such as EV charging optimization, smart climate automation, trailer hitch prediction, and traction forecasting. Owned the ML lifecycle end-to-end—requirements, modeling, validation, and deployment—delivering 4+ features that improved UX and operational efficiency.",
+    title: "Forward Deployed Engineering, ML & Data",
+    dateRange: "Jul 2021 – Jul 2022",
+    summary: "Led AI/ML programs at GM's Canadian Technical Centre AI Innovation Team: EV battery charging optimization, smart climate control, automatic trailer hitching, and road/tire traction prediction. Owned the full PDLC — discovery sessions, business case creation, user journey mapping, backlog creation, execution, and continuous improvement. Delivered 4+ features on time, improving both user engagement and stakeholder satisfaction.",
     logo: "/logos/gm.png",
     url: "https://www.gm.com"
   },
   {
-    company: "AltaML Inc.",
-    dateRange: "May 2020 - July 2021",
-    summary: "Led delivery of 0→1 ML solutions across healthcare, energy, insurance, and technology clients. Defined requirements through user research, process mapping, and viability assessments. Managed technical execution to ensure prototypes converted into commercially viable products with clear ROI.",
+    company: "AltaML",
+    title: "Forward Deployed Engineering, AI Solutions",
+    dateRange: "May 2020 – Jul 2021",
+    summary: "Led end-to-end delivery of ML solutions for enterprise clients across Healthcare, Energy & Utilities, Insurance, Technology, and Construction. Delivered low-risk PoC models built for production scalability, then guided clients through pilot and integration phases. Applied Classification, Clustering, NLP, Computer Vision, and MLOps on Azure ML. Facilitated ROI assessments and AI strategy workshops to determine feasibility before committing to build.",
     logo: "/logos/altaml.png",
     url: "https://www.altaml.com"
   }
@@ -40,18 +45,21 @@ const experiences = [
 
 export default function ExperienceSection() {
   return (
-    <section id="experience" className="py-20 lg:py-32 bg-muted/30">
-      <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-20">
-        <div className="space-y-4 mb-12">
+    <section id="experience" className="py-20 lg:py-32">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className="space-y-2 mb-14">
+          <p className="text-xs uppercase tracking-widest font-medium text-muted-foreground">
+            Career
+          </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold" data-testid="text-section-title">
             Where I've Worked
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl" data-testid="text-section-description">
-            From startups to big tech, here's what I've been building
+          <p className="text-lg text-muted-foreground max-w-2xl" data-testid="text-section-description">
+            From AI-native startups to big tech, building at every scale
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="relative border-l-2 border-border space-y-12">
           {experiences.map((exp, index) => (
             <ExperienceCard key={exp.company} {...exp} index={index} />
           ))}

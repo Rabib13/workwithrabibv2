@@ -290,3 +290,403 @@
     inset: -1px;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Site design system — workwithrabib.com
+   Warm, minimal, writing-first. Palette is small and deliberate — do not add
+   colours. All site-* classes are scoped and don't touch the portfolio.
+───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --site-bg:         #FAF8F4;   /* warm off-white / paper */
+  --site-fg:         #1F1B16;   /* warm near-black */
+  --site-muted:      #6B6358;   /* warm brown-grey — identity line, labels, dates */
+  --site-border:     #E6E1D8;   /* warm hairline */
+  --site-link:       #9A5B43;   /* muted terracotta — ONLY used for links */
+  --site-link-hover: #7A3E28;   /* darkened terracotta on hover */
+  --site-font:       "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-measure:    640px;
+}
+
+html[data-theme="dark"] {
+  --site-bg:         #101713;   /* nocturne green-black */
+  --site-fg:         #F0ECE3;   /* warm parchment */
+  --site-muted:      #A8A091;   /* softened moss-grey */
+  --site-border:     #26332D;   /* low-contrast evergreen */
+  --site-link:       #D99A65;   /* amber terracotta */
+  --site-link-hover: #F0B982;   /* warmed amber on hover */
+}
+
+html[data-theme="dark"] body {
+  background: var(--site-bg);
+}
+
+/* ── Root wrapper ── */
+.site-root {
+  background: var(--site-bg);
+  color: var(--site-fg);
+  min-height: 100svh;
+  font-family: var(--site-font);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Single column ── */
+.site-column {
+  max-width: var(--site-measure);
+  margin: 0 auto;
+  padding: 52px 28px 64px;
+}
+
+@media (min-width: 640px) {
+  .site-column {
+    padding: 60px 40px 76px;
+  }
+}
+
+/* ── Header ── */
+.site-header {
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.site-header-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.07;
+  filter: grayscale(1) brightness(1.8) blur(6px);
+  pointer-events: none;
+  transform: scale(1.05); /* compensate for blur edge bleed */
+}
+
+[data-theme="dark"] .site-header-bg {
+  opacity: 0.04;
+  filter: grayscale(1) brightness(0.5) blur(6px);
+}
+
+.site-header-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.site-avatar {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.site-nav {
+  position: relative;
+}
+
+.site-name {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--site-fg);
+  margin: 0 0 3px;
+}
+
+.site-identity {
+  font-size: 15px;
+  color: var(--site-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.site-nav {
+  display: flex;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.site-nav a {
+  font-size: 13px;
+  color: var(--site-muted);
+  text-decoration: none;
+  transition: color 120ms;
+}
+
+.site-nav a:hover {
+  color: var(--site-fg);
+}
+
+.site-theme-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--site-muted);
+  cursor: pointer;
+  transition: color 120ms;
+}
+
+.site-theme-toggle:hover {
+  color: var(--site-fg);
+}
+
+/* ── Inline article reader ── */
+.site-article-item {
+  border-bottom: 1px solid var(--site-border);
+}
+
+.site-article-item:last-child {
+  border-bottom: none;
+}
+
+.site-article-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 0;
+}
+
+.site-article-body {
+  padding-bottom: 8px;
+}
+
+.site-article-content {
+  overflow: hidden;
+  padding-top: 6px;
+}
+
+.site-article-content.is-collapsed {
+  max-height: 120rem;
+  position: relative;
+}
+
+.site-article-content.is-collapsed::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--site-bg));
+  pointer-events: none;
+}
+
+.site-article-content h2 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--site-fg);
+  margin: 24px 0 10px;
+}
+
+.site-article-content p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--site-fg);
+  margin-bottom: 14px;
+  max-width: 60ch;
+}
+
+.site-article-content sup {
+  font-size: 10px;
+  line-height: 0;
+}
+
+.site-article-content a,
+.site-article-toggle {
+  color: var(--site-link);
+  text-decoration: none;
+  transition: color 120ms;
+}
+
+.site-article-content a:hover,
+.site-article-toggle:hover {
+  color: var(--site-link-hover);
+}
+
+.site-article-content hr {
+  border: 0;
+  border-top: 1px solid var(--site-border);
+  margin: 28px 0 22px;
+}
+
+.site-article-content ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.site-article-content li {
+  color: var(--site-fg);
+  font-size: 13px;
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.site-article-content li p {
+  font-size: inherit;
+  line-height: inherit;
+  margin-bottom: 0;
+}
+
+.site-article-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 14px;
+  margin-top: 8px;
+  padding: 0;
+}
+
+/* ── Sections ── */
+.site-section {
+  padding-top: 28px;
+  border-top: 1px solid var(--site-border);
+  margin-bottom: 36px;
+  scroll-margin-top: 32px;
+}
+
+.site-section-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--site-muted);
+  margin: 0 0 20px;
+}
+
+/* ── About prose ── */
+.site-prose {
+  max-width: 62ch;
+  line-height: 1.75;
+}
+
+.site-prose p {
+  font-size: 15px;
+  color: var(--site-fg);
+  margin: 0 0 1.1em;
+}
+
+.site-prose p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Personal standalone line ── */
+/* ── Collapsible work history (<details>/<summary>, no JS) ── */
+.site-details {
+  margin-top: 20px;
+  max-width: 62ch;
+}
+
+.site-details > summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--site-fg);
+  user-select: none;
+}
+
+.site-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.site-details > summary::marker {
+  display: none;
+}
+
+.site-chevron {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  transition: transform 180ms ease;
+  color: var(--site-muted);
+}
+
+.site-details[open] .site-chevron {
+  transform: rotate(90deg);
+}
+
+.site-work-list {
+  list-style: disc;
+  padding: 16px 0 4px 18px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.site-work-list li {
+  font-size: 14px;
+  color: var(--site-fg);
+  line-height: 1.65;
+}
+
+/* ── Links — terracotta, only for external / content links ── */
+.site-link,
+.site-work-list a,
+.site-contact a {
+  color: var(--site-link);
+  text-decoration: none;
+  transition: color 120ms;
+}
+
+.site-link:hover,
+.site-work-list a:hover,
+.site-contact a:hover {
+  color: var(--site-link-hover);
+}
+
+/* ── Writing list ── */
+.site-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--site-border);
+}
+
+.site-title {
+  font-size: 15px;
+  color: var(--site-fg);
+  line-height: 1.4;
+}
+
+.site-link {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.site-label {
+  font-size: 13px;
+  color: var(--site-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Contact ── */
+.site-contact {
+  display: flex;
+  gap: 20px;
+}
+
+/* ── Footer ── */
+.site-footer {
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid var(--site-border);
+  font-size: 12px;
+  color: var(--site-border);
+}

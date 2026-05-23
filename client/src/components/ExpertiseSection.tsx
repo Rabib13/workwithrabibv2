@@ -1,95 +1,138 @@
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 
 const tools = [
-  { category: "Development", items: ["Python", "SQL", "GitHub", "Cursor", "Claude Code", "Familiarity with vibecoding", "VSCode"] },
-  { category: "Data & Analytics", items: ["DBeaver", "Periscope", "Splunk", "DBT"] },
-  { category: "Infrastructure", items: ["AWS", "Kubernetes", "Docker"] },
-  { category: "Collaboration", items: ["JIRA", "Confluence", "Postman"] }
+  {
+    category: "Programming & Dev",
+    items: ["Python", "SQL", "GitHub", "Cursor", "Claude Code", "VSCode"]
+  },
+  {
+    category: "ML & AI",
+    items: ["Classification", "Clustering", "NLP", "Computer Vision", "MLOps", "Azure ML", "PaLM 2", "LLM"]
+  },
+  {
+    category: "Infrastructure & Cloud",
+    items: ["AWS", "Azure", "Kubernetes", "Docker"]
+  },
+  {
+    category: "Data & Analytics",
+    items: ["DBeaver", "Periscope", "Splunk", "DBT", "BigQuery", "Distributed Tracing"]
+  },
+  {
+    category: "Collaboration & PM",
+    items: ["JIRA", "Confluence", "Postman", "Notion"]
+  }
 ];
 
-const interests = [
-  "Building products from 0 to 1",
-  "Leading technical execution",
-  "Bridging product strategy and engineering",
-  "Data-driven problem solving",
-  "Working across the entire stack"
+const domains = [
+  { label: "AI Infrastructure", note: "Meta — data centre networking, custom silicon" },
+  { label: "Energy & Utilities", note: "Tesla Energy — OTA systems, fleet monitoring" },
+  { label: "Ad-Tech & E-Commerce", note: "Loblaw Digital — ML ads, self-serve platforms" },
+  { label: "Automotive", note: "General Motors — in-vehicle ML, R&D programs" },
+  { label: "Healthcare AI", note: "Loblaw Digital — GenAI chatbot, appointment automation" },
+];
+
+const strengths = [
+  "Technical program delivery from 0 to 1",
+  "Bridging product strategy and engineering execution",
+  "Cross-functional alignment across hardware, software, and platform teams",
+  "Data-driven problem scoping and ROI assessment",
+  "NPI programs with hardware and network vendors",
+  "ML product lifecycle: discovery → model → deployment",
 ];
 
 export default function ExpertiseSection() {
   return (
     <section id="expertise" className="py-20 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        <div className="space-y-4 mb-12">
+        <div className="space-y-2 mb-14">
+          <p className="text-xs uppercase tracking-widest font-medium text-muted-foreground">
+            Capabilities
+          </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold" data-testid="text-section-title">
             What I Bring
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl" data-testid="text-section-description">
-            Full-stack technical expertise across industries and the entire software stack
+          <p className="text-lg text-muted-foreground max-w-2xl" data-testid="text-section-description">
+            Technical depth across industries, stacks, and program types
           </p>
         </div>
 
-        <Card className="mb-8 p-8 hover-elevate transition-all duration-300">
-          <h3 className="text-xl font-semibold mb-4" data-testid="text-domains-title">
-            Domain Experience
-          </h3>
-          <p className="text-foreground/90 leading-relaxed mb-6">
-            I've led strategy and execution across multiple industries—automotive (GM), energy (Tesla), e-commerce & ad-tech (Loblaw), and AI infrastructure (Meta). This breadth gives me a unique perspective on scalable architectures and product patterns that work across domains.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Badge variant="outline" className="text-base px-4 py-2" data-testid="badge-domain-automotive">
-              Automotive
-            </Badge>
-            <Badge variant="outline" className="text-base px-4 py-2" data-testid="badge-domain-energy">
-              Energy & Utilities
-            </Badge>
-            <Badge variant="outline" className="text-base px-4 py-2" data-testid="badge-domain-ecommerce">
-              E-Commerce & Ad-Tech
-            </Badge>
-            <Badge variant="outline" className="text-base px-4 py-2" data-testid="badge-domain-ai">
-              AI Infrastructure
-            </Badge>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Domain Experience */}
+          <div className="rounded-xl border border-border p-8 space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-1" data-testid="text-domains-title">
+                Domain Experience
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Five industries, one consistent pattern: shipping programs that run at scale.
+              </p>
+            </div>
+            <ul className="space-y-4">
+              {domains.map((domain) => (
+                <li key={domain.label} className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
+                  <div>
+                    <span className="font-medium text-sm">{domain.label}</span>
+                    <p className="text-xs text-muted-foreground mt-0.5">{domain.note}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
-        </Card>
 
-        <Card className="mb-8 p-8 hover-elevate transition-all duration-300">
-          <h3 className="text-xl font-semibold mb-4" data-testid="text-stack-title">
-            Full-Stack Experience
-          </h3>
-          <p className="text-foreground/90 leading-relaxed mb-6">
-            I've led delivery across the full stack—from frontend UX and ML models to backend systems, data pipelines, and custom-silicon network infrastructure. This helps me bridge technical details with product outcomes and make stronger architectural decisions.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {tools.map((toolGroup, index) => (
-              <div key={index} data-testid={`group-tools-${index}`}>
-                <div className="text-sm font-medium text-muted-foreground mb-3">
-                  {toolGroup.category}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {toolGroup.items.map((item, idx) => (
-                    <Badge key={idx} variant="secondary" className="text-xs" data-testid={`badge-tool-${item.toLowerCase()}`}>
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            ))}
+          {/* Core Strengths */}
+          <div className="rounded-xl border border-border p-8 space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-1" data-testid="text-interests-title">
+                Core Strengths
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                What I do best, regardless of industry or stack.
+              </p>
+            </div>
+            <ul className="space-y-3">
+              {strengths.map((strength, index) => (
+                <li key={index} className="flex items-start gap-3" data-testid={`text-interest-${index}`}>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
+                  <span className="text-sm text-foreground/85">{strength}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </Card>
 
-        <Card className="p-8 hover-elevate transition-all duration-300">
-          <h3 className="text-xl font-semibold mb-4" data-testid="text-interests-title">
-            What Drives Me
-          </h3>
-          <ul className="space-y-3">
-            {interests.map((interest, index) => (
-              <li key={index} className="flex items-start gap-3" data-testid={`text-interest-${index}`}>
-                <span className="text-primary mt-1">•</span>
-                <span className="text-foreground/90 text-lg">{interest}</span>
-              </li>
-            ))}
-          </ul>
-        </Card>
+          {/* Technical Stack */}
+          <div className="rounded-xl border border-border p-8 space-y-6 lg:col-span-2">
+            <div>
+              <h3 className="text-lg font-semibold mb-1" data-testid="text-stack-title">
+                Technical Stack
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Tools I've shipped with across the full stack.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {tools.map((toolGroup, index) => (
+                <div key={index} data-testid={`group-tools-${index}`}>
+                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
+                    {toolGroup.category}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {toolGroup.items.map((item) => (
+                      <Badge
+                        key={item}
+                        variant="secondary"
+                        className="text-xs"
+                        data-testid={`badge-tool-${item.toLowerCase()}`}
+                      >
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
