@@ -8,7 +8,7 @@ function useTheme() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     const stored = localStorage.getItem("site-theme") as "light" | "dark" | null;
     if (stored) return stored;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "light";
   });
 
   useEffect(() => {
