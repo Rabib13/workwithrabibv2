@@ -152,6 +152,7 @@ function TweetRow({ tweet }: { tweet: Tweet }) {
       <span className="site-tweet-meta">
         {tweet.topic} / {tweet.date}
       </span>
+      <span className="site-tweet-link">View on X</span>
     </a>
   );
 }

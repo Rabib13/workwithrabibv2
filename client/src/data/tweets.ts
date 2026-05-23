@@ -30,4 +30,10 @@ export const tweets: Tweet[] = [
     date: "May 3, 2026",
     topic: "AI economics",
   },
+  {
+    text: "Just listened to Zuck's earnings call today, and it was really cool to hear him directly call out the work my team and I are part of: more than 1GW of custom silicon with Broadcom, plus AMD chips...",
+    url: "https://x.com/rabib_ai/status/2050339147861414181",
+    date: "May 1, 2026",
+    topic: "Meta AI infra",
+  },
 ];
