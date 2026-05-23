@@ -726,12 +726,6 @@ html[data-theme="dark"] body {
   line-height: 1.4;
 }
 
-.site-tweet-link {
-  color: var(--site-link);
-  font-size: 13px;
-  line-height: 1.4;
-}
-
 /* ── Contact ── */
 .site-contact {
   display: flex;
