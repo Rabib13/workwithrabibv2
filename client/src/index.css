@@ -354,6 +354,7 @@ html[data-theme="dark"] body {
 }
 
 .site-header-bg {
+  display: none;
   position: absolute;
   inset: 0;
   background-size: cover;
@@ -365,6 +366,7 @@ html[data-theme="dark"] body {
 }
 
 [data-theme="dark"] .site-header-bg {
+  display: block;
   opacity: 0.04;
   filter: grayscale(1) brightness(0.5) blur(6px);
 }
@@ -464,7 +466,7 @@ html[data-theme="dark"] body {
 }
 
 .site-article-content.is-collapsed {
-  max-height: 120rem;
+  max-height: 34rem;
   position: relative;
 }
 
@@ -501,14 +503,16 @@ html[data-theme="dark"] body {
 }
 
 .site-article-content a,
-.site-article-toggle {
+.site-article-toggle,
+.site-substack-link {
   color: var(--site-link);
   text-decoration: none;
   transition: color 120ms;
 }
 
 .site-article-content a:hover,
-.site-article-toggle:hover {
+.site-article-toggle:hover,
+.site-substack-link:hover {
   color: var(--site-link-hover);
 }
 
@@ -544,6 +548,14 @@ html[data-theme="dark"] body {
   font-size: 14px;
   margin-top: 8px;
   padding: 0;
+}
+
+.site-substack-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 18px;
+  margin-top: 8px;
 }
 
 /* ── Sections ── */

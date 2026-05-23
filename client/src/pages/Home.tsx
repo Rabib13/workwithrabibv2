@@ -82,6 +82,16 @@ function ArticleRow({ article }: { article: Article }) {
               {expanded ? "Show less" : "Read full article"}
             </button>
           )}
+          {article.url && (
+            <a
+              href={article.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="site-substack-link"
+            >
+              Read the original on Substack
+            </a>
+          )}
         </div>
       )}
     </div>
