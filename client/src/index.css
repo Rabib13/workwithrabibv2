@@ -688,6 +688,44 @@ html[data-theme="dark"] body {
   flex-shrink: 0;
 }
 
+/* ── Tweets ── */
+.site-tweet-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--site-border);
+}
+
+.site-tweet {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--site-border);
+  color: var(--site-fg);
+  text-decoration: none;
+  transition: color 120ms;
+}
+
+.site-tweet:last-child {
+  border-bottom: none;
+}
+
+.site-tweet:hover {
+  color: var(--site-link);
+}
+
+.site-tweet-text {
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.site-tweet-meta {
+  color: var(--site-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
 /* ── Contact ── */
 .site-contact {
   display: flex;

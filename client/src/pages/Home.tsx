@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { articles, papers } from "@/data/writing";
+import { tweets } from "@/data/tweets";
 import type { Article, Paper } from "@/data/writing";
+import type { Tweet } from "@/data/tweets";
 
 function useTheme() {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
@@ -138,6 +140,22 @@ function PaperRow({ paper }: { paper: Paper }) {
   );
 }
 
+function TweetRow({ tweet }: { tweet: Tweet }) {
+  return (
+    <a
+      href={tweet.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="site-tweet"
+    >
+      <span className="site-tweet-text">{tweet.text}</span>
+      <span className="site-tweet-meta">
+        {tweet.topic} / {tweet.date}
+      </span>
+    </a>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -167,6 +185,7 @@ export default function Home() {
           <nav className="site-nav">
             <a href="#about">about</a>
             <a href="#writing">writing</a>
+            <a href="#tweets">tweets</a>
             <a href="#contact">contact</a>
             <button className="site-theme-toggle" onClick={toggle} aria-label="Toggle color scheme">
               {theme === "light" ? "dark" : "light"}
@@ -268,6 +287,17 @@ export default function Home() {
               </div>
             </div>
           )}
+        </section>
+
+        {/* ── Tweets ── */}
+        <section id="tweets" className="site-section">
+          <h2 className="site-section-label">Tweets</h2>
+
+          <div className="site-tweet-list">
+            {tweets.map((tweet) => (
+              <TweetRow key={tweet.url} tweet={tweet} />
+            ))}
+          </div>
         </section>
 
         {/* ── Contact ── */}
