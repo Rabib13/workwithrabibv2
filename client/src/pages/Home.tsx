@@ -5,15 +5,16 @@ import type { Article, Paper } from "@/data/writing";
 import type { Tweet } from "@/data/tweets";
 
 function useTheme() {
+  const themeStorageKey = "site-theme-v2";
   const [theme, setTheme] = useState<"light" | "dark">(() => {
-    const stored = localStorage.getItem("site-theme") as "light" | "dark" | null;
+    const stored = localStorage.getItem(themeStorageKey) as "light" | "dark" | null;
     if (stored) return stored;
     return "light";
   });
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("site-theme", theme);
+    localStorage.setItem(themeStorageKey, theme);
   }, [theme]);
 
   return { theme, toggle: () => setTheme((t) => (t === "light" ? "dark" : "light")) };
