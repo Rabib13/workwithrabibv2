@@ -309,12 +309,12 @@
 }
 
 html[data-theme="dark"] {
-  --site-bg:         #171615;   /* warm charcoal */
-  --site-fg:         #EFEAE3;   /* soft paper */
-  --site-muted:      #AAA39A;   /* warm graphite */
-  --site-border:     #302D2A;   /* quiet charcoal rule */
-  --site-link:       #D89A72;   /* muted copper */
-  --site-link-hover: #F0B894;   /* softened copper on hover */
+  --site-bg:         #1A1A1B;   /* graphite */
+  --site-fg:         #EEEAE2;   /* soft paper */
+  --site-muted:      #AAA49B;   /* warm grey */
+  --site-border:     #313133;   /* quiet graphite rule */
+  --site-link:       #D6A06D;   /* muted amber */
+  --site-link-hover: #E9BC8B;   /* softened amber on hover */
 }
 
 html[data-theme="dark"] body {
