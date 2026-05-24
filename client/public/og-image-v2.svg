@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF8F4" />
+      <stop offset="100%" stop-color="#EFE9DE" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#FAF8F4" stroke="#E6E1D8" stroke-width="2" />
+  <text x="128" y="210" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="78" font-weight="700" fill="#1F1B16">Rabib Alam</text>
+  <text x="128" y="288" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="34" font-weight="500" fill="#6B6358">Deploying GPUs and custom silicon at Meta</text>
+  <text x="128" y="355" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="400" fill="#6B6358">Writing about AI infrastructure, network clusters,</text>
+  <text x="128" y="395" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="28" font-weight="400" fill="#6B6358">and systems at scale.</text>
+  <text x="128" y="500" font-family="Inter, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24" font-weight="500" fill="#9A5B43">workwithrabib.com</text>
+</svg>
